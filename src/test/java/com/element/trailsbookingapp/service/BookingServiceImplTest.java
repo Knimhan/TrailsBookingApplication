@@ -6,6 +6,7 @@ import com.element.trailsbookingapp.fixture.BookingFixture;
 import com.element.trailsbookingapp.fixture.TrailFixture;
 import com.element.trailsbookingapp.model.BookingDTO;
 import com.element.trailsbookingapp.repository.BookingRepository;
+import com.element.trailsbookingapp.service.impl.BookingServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -18,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-public class BookingServiceTest {
+public class BookingServiceImplTest {
 
     @Mock
     private BookingRepository bookingRepository;
@@ -27,7 +28,7 @@ public class BookingServiceTest {
     private TrailService trailService;
 
     @InjectMocks
-    private BookingService bookingService;
+    private BookingServiceImpl bookingService;
 
     @Test
     void testInvalidBookingRequestExceptionIsThrownWhenAgeIsInvalid() {
