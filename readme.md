@@ -15,6 +15,7 @@
 ### How to build and start locally
  Using docker
 ```bash
+$ mvn clean isntall
 $ docker build -t trails-booking-app . 
 $ docker run -p 8080:8080 trails-booking-app
 ```
