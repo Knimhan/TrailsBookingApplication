@@ -28,7 +28,7 @@ public class BookingServiceImplTest {
     private TrailService trailService;
 
     @InjectMocks
-    private BookingServiceImpl bookingService;
+    private BookingServiceImpl bookingServiceImpl;
 
     @Test
     void testInvalidBookingRequestExceptionIsThrownWhenAgeIsInvalid() {
@@ -38,7 +38,7 @@ public class BookingServiceImplTest {
 
         //when
         Throwable exception = assertThrows(InvalidBookingRequestException.class,
-                () -> bookingService.save(bookingDTO));
+                () -> bookingServiceImpl.save(bookingDTO));
 
         //then
         assertEquals("Could not create booking as age of hikers do not fall into required range",
@@ -54,7 +54,7 @@ public class BookingServiceImplTest {
 
         //when
         Throwable exception = assertThrows(InvalidBookingRequestException.class,
-                () -> bookingService.save(bookingDTO));
+                () -> bookingServiceImpl.save(bookingDTO));
 
         //then
         assertEquals("Booking does not contain hikers",
@@ -70,7 +70,7 @@ public class BookingServiceImplTest {
 
         //when
         Throwable exception = assertThrows(InvalidBookingRequestException.class,
-                () -> bookingService.save(bookingDTO));
+                () -> bookingServiceImpl.save(bookingDTO));
 
         //then
         assertEquals("Hike date is not valid",
@@ -85,7 +85,7 @@ public class BookingServiceImplTest {
 
         //when
         Throwable exception = assertThrows(BookingNotFoundException.class,
-                () -> bookingService.cancelBooking(id));
+                () -> bookingServiceImpl.cancelBooking(id));
 
         //then
         assertEquals(String.format("Booking with %d does not exist", id),

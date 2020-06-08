@@ -2,6 +2,7 @@ package com.element.trailsbookingapp.service;
 
 import com.element.trailsbookingapp.exception.TrailNotFoundException;
 import com.element.trailsbookingapp.repository.TrailRepository;
+import com.element.trailsbookingapp.service.impl.TrailServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -14,13 +15,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-public class TrailServiceTest {
+public class TrailServiceImplTest {
 
     @Mock
     TrailRepository trailRepository;
 
     @InjectMocks
-    private TrailService trailService;
+    private TrailServiceImpl trailServiceImpl;
 
 
     @Test
@@ -31,7 +32,7 @@ public class TrailServiceTest {
 
         //when
         Throwable exception = assertThrows(TrailNotFoundException.class,
-                () -> trailService.get(id));
+                () -> trailServiceImpl.get(id));
 
         //then
         assertEquals(String.format("Trail with id %d not found", id),

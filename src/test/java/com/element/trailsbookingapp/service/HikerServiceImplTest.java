@@ -2,6 +2,7 @@ package com.element.trailsbookingapp.service;
 
 import com.element.trailsbookingapp.exception.HikerNotFoundException;
 import com.element.trailsbookingapp.repository.HikerRepository;
+import com.element.trailsbookingapp.service.impl.HikerServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -14,13 +15,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-public class HikerServiceTest {
+public class HikerServiceImplTest {
 
     @Mock
     private HikerRepository hikerRepository;
 
     @InjectMocks
-    private HikerService hikerService;
+    private HikerServiceImpl hikerServiceImpl;
 
     @Test
     void testHikerNotFoundException() {
@@ -30,7 +31,7 @@ public class HikerServiceTest {
 
         //when
         Throwable exception = assertThrows(HikerNotFoundException.class,
-                () -> hikerService.getBookingOfHiker(id));
+                () -> hikerServiceImpl.getBookingOfHiker(id));
 
         //then
         assertEquals(String.format("Hiker %d is not present", id),
